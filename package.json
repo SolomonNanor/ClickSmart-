@@ -1,0 +1,12 @@
+{
+  "name": "clicksmart",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "cd frontend && NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8001/api npm run dev",
+    "dev:backend": "cd backend && ./.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8001",
+    "dev": "concurrently -k -n backend,frontend -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
