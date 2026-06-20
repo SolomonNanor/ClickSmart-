@@ -58,49 +58,69 @@ After the prototype has been built, the system will be demonstrated using struct
 
 The final stage will evaluate the artefact using framework-based methods. The evaluation findings will be analysed and connected back to the research questions. The dissertation will then present the artefact, demonstration, evaluation results, limitations, and recommendations for future improvement.
 
-## Technologies to Be Used
+## Technologies Used
 
-The following technologies are proposed for building and documenting the ClickSmart artefact:
+The following technologies were used to build and document the ClickSmart artefact:
 
 - HTML5: to structure the web pages and learning content.
 - CSS3: to style the interface and ensure a clean, usable layout.
 - JavaScript: to support interaction, scenario logic, cue selection, and feedback.
 - React: to build the prototype as a reusable component-based web application.
+- Next.js: as the React framework that provides routing, page structure, and the development and build environment for the prototype.
 - TypeScript: to improve code reliability and make the application logic easier to maintain.
-- Vite: to provide a fast development environment for the React prototype.
 - Tailwind CSS: to support consistent, responsive styling.
-- Lucide React Icons: to provide clear interface icons for navigation and actions.
-- Browser Local Storage: to save simple prototype progress without requiring a full backend.
-- JSON: to store microlearning content, phishing scenarios, cues, and feedback data.
-- Node.js and npm: to manage the development environment and project dependencies.
+- PostCSS and Autoprefixer: to process the Tailwind styles and apply them consistently across browsers.
+- FastAPI (Python): to provide the backend API for learning modules, phishing scenarios, feedback, and evaluation scoring.
+- Uvicorn: to run the FastAPI backend during development.
+- SQLAlchemy: to define the data models and interact with the database.
+- SQLite: as a lightweight database for storing modules, scenarios, feedback, and evaluation results.
+- JSON: to exchange microlearning content, phishing scenarios, cues, and feedback data between the frontend and backend.
+- Browser Local Storage: to keep simple prototype progress and theme settings on the client.
+- Node.js and npm: to manage the frontend environment and project dependencies.
+- Concurrently: to run the frontend and backend together during development.
 - Git and GitHub: to support version control, backup, and development history.
 - Visual Studio Code or Codex: to write, organise, and maintain the project code.
+- Microsoft PowerPoint: to design all project diagrams so that the wording is clearly visible and every diagram shares the same appearance and colour scheme, as advised by the supervisor.
 - Microsoft Word: to prepare supervisor-facing documents and dissertation material.
-- Microsoft Excel or tables: to organise evaluation matrices, heuristic findings, and cognitive walkthrough results.
+- Microsoft Excel or tables: to organise the evaluation matrices, heuristic findings, and cognitive walkthrough results.
 
-The prototype will not require a complex backend unless the project scope changes. If later needed, Firebase or Supabase could be considered for authentication, database storage, or hosted progress tracking, but these are not required for the initial research artefact.
+The prototype uses a lightweight FastAPI and SQLite backend rather than a third-party service such as Firebase or Supabase. The frontend can also fall back to local content if the backend is unavailable, so the system remains demonstrable as a self-contained research artefact.
 
 ## Evaluation Approach
 
-The evaluation will be framework-based rather than based on user experimentation. This approach is suitable for the project scope because it allows the artefact to be assessed systematically against established principles and analytical methods.
+The evaluation is framework-based and is organised around a conceptual evaluation framework that brings together three constructs: Usable Security, Cognitive (cognitive walkthrough), and Cue-Diagnosticity. Following supervisor guidance, the outcome of the evaluation is presented as a matrix in which each user is assessed against these three constructs. For each user the matrix records a score for every construct, an overall Score (%), and a Level shown both as a band and as a colour code. Each construct is supported by an established analytical method with references, and the framework states the reason for choosing the construct, its purpose, and the outcome it produces.
 
-### Usable Security Heuristic Evaluation
+### Conceptual Evaluation Framework
 
-This evaluation will assess whether the interface supports secure behaviour while remaining usable. It will consider areas such as clarity of security information, ease of navigation, visibility of important cues, feedback quality, error prevention, and cognitive load.
+| Construct | Reason for choosing it | Purpose | Method and references | Supports |
+|---|---|---|---|---|
+| Usable Security | Phishing succeeds when security information is hard to notice or understand, so the interface must make secure behaviour usable. | Assess clarity of security information, navigation, visibility of cues, feedback quality, error prevention, and cognitive load. | Usable security heuristic evaluation (Nielsen, 1994; Whitten & Tygar, 1999; Yee, 2004). | RQ2 |
+| Cognitive | Phishing detection is a decision-making task, so it is important to model how a user thinks and acts at each step. | Model whether a typical user knows what action to take, notices the right options, and interprets feedback correctly. | Cognitive walkthrough (Polson et al., 1992; Wharton et al., 1994). | RQ3 |
+| Cue-Diagnosticity | Safe decisions depend on noticing and correctly interpreting phishing cues. | Assess whether phishing cues are visible, meaningful, and useful for telling phishing from legitimate messages. | Cue-diagnosticity and cue-processing constructs (Vishwanath et al., 2011; Wang et al., 2012). | RQ4 |
 
-This will help answer RQ2.
+### Scoring and Levels
 
-### Cognitive Walkthrough
+Each construct is scored as a percentage from its method (heuristic ratings, walkthrough pass/fail per step, and cue-recognition accuracy). The overall Score (%) is the average of the three construct scores, and the Level is assigned from that score using a colour-coded band:
 
-The cognitive walkthrough will model how a typical user might move through phishing detection tasks in the system. It will examine whether users are likely to understand what action to take, notice relevant options, interpret feedback correctly, and make secure decisions.
+| Level | Score range | Colour code | Meaning |
+|---|---|---|---|
+| High | 80–100% | Green | The artefact strongly supports the construct for this user. |
+| Moderate | 60–79% | Yellow | The artefact provides good support; minor improvement is needed. |
+| Low | 40–59% | Orange | The artefact provides partial support; clear improvement is needed. |
+| Very Low | 0–39% | Red | The artefact provides weak support; significant improvement is needed. |
 
-This will help answer RQ3.
+### Evaluation Matrix (per user)
 
-### Cue-Diagnosticity Assessment
+The results are recorded in a matrix with one row per user, as advised by the supervisor. Each cell holds the construct score, and the final columns hold the overall Score (%) and the colour-coded Level.
 
-The cue-diagnosticity assessment will examine how effectively the artefact helps users recognise and interpret phishing cues. This includes cues such as sender address, suspicious links, urgency, requests for sensitive information, unexpected attachments, grammar issues, brand impersonation, and mismatch between message and context.
+| User | Usable Security | Cognitive | Cue-Diagnosticity | Score (%) | Level |
+|---|---|---|---|---|---|
+| User 1 | | | | | |
+| User 2 | | | | | |
+| User 3 | | | | | |
+| … | | | | | |
 
-This will help answer RQ4.
+Each matrix is accompanied by a written explanation that states why the construct was chosen for that evaluation, the purpose of the matrix, and the outcome (the score and the colour-coded level) for each user. These explanations link the matrix results back to RQ2, RQ3, and RQ4.
 
 ## Demonstration Plan
 
@@ -130,7 +150,7 @@ The project is expected to contribute:
 
 ## Project Scope
 
-The project will focus on designing, developing, demonstrating, and evaluating the ClickSmart prototype. It will not include large-scale user testing, live phishing simulations against real users, or deployment within an organisation. The evaluation will be analytical and framework-based.
+The project will focus on designing, developing, demonstrating, and evaluating the ClickSmart prototype. It will not include large-scale experimentation, live phishing simulations against real users, or deployment within an organisation. The evaluation remains framework-based, but it is applied per user through the evaluation matrix, so each user is scored against the usable security, cognitive, and cue-diagnosticity constructs.
 
 This scope keeps the project achievable within the dissertation timeframe while still allowing for meaningful artefact development and evaluation.
 
@@ -165,6 +185,19 @@ This timeline may be adjusted depending on supervisor feedback, technical issues
 6. Evaluation
 7. Discussion
 8. Conclusion
+
+## Supervisor Requirements for the Write-Up
+
+The following instructions from the supervisor meeting are applied to the dissertation write-up:
+
+- The thesis should total around 20,000 words.
+- The conceptual framework for design and evaluation is presented as a per-user matrix (Usable Security, Cognitive, Cue-Diagnosticity), each with a reason for its use, a purpose, references, and an outcome shown as a score and a colour-coded level, presented in table form with explanations.
+- All diagrams are designed in PowerPoint so the wording is clearly visible, and every diagram shares the same appearance and colour scheme.
+- The Chapter 2 summary is reduced to three paragraphs.
+- The table of contents, subtitles, and subheadings are checked for consistency.
+- Each chapter begins with two or three lines about the previous chapter before its introduction.
+- The summary of every subtitle links back to the main body of the chapter.
+- Design Science Research (previously Chapter 2, section 2.10) is moved into the Methodology chapter (Chapter 3); this is reflected in the dissertation structure below.
 
 ## Summary
 

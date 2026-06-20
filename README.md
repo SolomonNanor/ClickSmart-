@@ -11,11 +11,35 @@ ClickSmart is a dissertation prototype for phishing awareness learning. It combi
 
 ## Run Locally
 
-Install the root tooling and the frontend dependencies first:
+### Quick start (recommended)
+
+The `setup.sh` script installs every dependency (root, frontend, and the
+backend Python virtual environment) and then starts both servers:
+
+```bash
+./setup.sh
+```
+
+Other modes:
+
+```bash
+./setup.sh --install   # install dependencies only
+./setup.sh --run       # start both servers (dependencies already installed)
+```
+
+It needs `node`, `npm`, `python3`, and `curl`. If the system is missing the
+`python3-venv` package, the script bootstraps `pip` automatically.
+
+### Manual steps
+
+Install the root tooling, the frontend dependencies, and the backend
+environment first:
 
 ```bash
 npm install
 npm --prefix frontend install
+python3 -m venv backend/.venv
+backend/.venv/bin/python -m pip install -r backend/requirements.txt
 ```
 
 Then from the repository root:
